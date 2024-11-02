@@ -10,7 +10,9 @@
 
 <body>
     <a href="/">Home</a>
+    <a href="/blog">blog</a>
     <a href="/about">About</a>
+    <a href="/contact">Contact</a>
     <h1>Halaman About</h1>
     <h3>Owner{{ $nama }}</h3>
     <img src="img/Planet9_Wallpaper_5000x2813 - Copy.jpg" alt="">
