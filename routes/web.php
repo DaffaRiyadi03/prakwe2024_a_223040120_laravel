@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -12,14 +13,18 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about', ['name' => 'Muhammad Daffa Riyadi', 'tittle' => 'contact']);
+    return view('about', ['name' => 'Muhammad Daffa Riyadi', 'tittle' => 'About']);
 });
 
 Route::get('/posts', function () {
     return view('posts', [
-        'tittle' => 'posts',
+        'tittle' => 'Posts',
         'posts' => Post::all()
     ]);
+});
+
+Route::get('/contact', function () {
+    return view('contact', ['tittle' => 'Contact']);
 });
 
 Route::get(
@@ -31,14 +36,18 @@ Route::get(
 );
 
 Route::get(
-    '/authors/{user}',
+    '/authors/{user:username}',
     function (User $user) {
 
-        return view('posts', ['tittle' => 'Article by' . $user->name, 'posts' => $user->posts]);
+        return view('posts', ['tittle' => count($user->posts) . ' Article by ' . $user->name, 'posts' => $user->posts]);
+    }
+);
+Route::get(
+    '/categories/{category:slug}',
+    function (Category $category) {
+
+        return view('posts', ['tittle' => ' Articles in : ' . $category->name, 'posts' => $category->posts]);
     }
 );
 
 
-Route::get('/contact', function () {
-    return view('contact', ['tittle' => 'Contact']);
-});

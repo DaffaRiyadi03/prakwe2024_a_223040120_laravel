@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\User; // Tambahkan baris ini
+use App\Models\Category;
 use Illuminate\Support\Str;
+use App\Models\User; // Tambahkan baris ini
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class PostFactory extends Factory
         return [
             'tittle' => fake()->sentence(5, false),
             'author_id' => User::factory(),
+            'category_id' => Category::factory(),
             'slug' => Str::slug(fake()->sentence()),
             'body' => fake()->text()
         ];
