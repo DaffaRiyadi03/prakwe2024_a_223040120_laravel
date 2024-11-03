@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\User; // Tambahkan baris ini
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\DB;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
  */
@@ -18,8 +19,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'tittle' => fake()->sentece(5, false),
-            'author' => fake()->name(),
+            'tittle' => fake()->sentence(5, false),
+            'author_id' => User::factory(),
             'slug' => Str::slug(fake()->sentence()),
             'body' => fake()->text()
         ];
