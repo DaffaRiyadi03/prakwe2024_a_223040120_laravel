@@ -38,7 +38,6 @@ class Post
 
         if (!$post) {
             aborted(404);
-
             return $post;
         }
     }
