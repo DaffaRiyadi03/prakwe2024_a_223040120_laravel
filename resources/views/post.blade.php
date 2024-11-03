@@ -6,7 +6,7 @@
         <h2 class="mb-1 text-3xl tracking-tight font-bold  text-grey-900">{{ $post['tittle'] }} 1</h2>
 
         <div class="text-base text-grey-500">
-            <a href="#">{{ $post['author'] }}</a> | 3 November 2024
+            <a href="#">{{ $post['author'] }}</a> | {{ $post->created_at->diffForHumans() }}
         </div>
         <p class="my-4 font-light">{{ $post['body'] }}</p>
         <a href="/posts" class="font-medium text-blue-500 hover:underline">&laquo; Back to post</a>
